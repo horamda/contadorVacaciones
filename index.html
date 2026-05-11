@@ -108,7 +108,7 @@
 
     // Fecha por defecto: 30 días adelante
     const fechaDefault = new Date();
-    fechaDefault.setDate(fechaDefault.getDate() + 30);
+    fechaDefault.setDate(fechaDefault.getDate() +1 );
     fechaDefault.setHours(8,0,0,0);
 
     fechaInput.value = fechaDefault.toISOString().slice(0,16);
