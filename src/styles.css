@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #81e6d9 0%, transparent 30%),
+    linear-gradient(135deg, #0ea5e9 0%, #4338ca 45%, #0f172a 100%);
+  color: #ffffff;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.hero-card {
+  width: min(100%, 960px);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 32px;
+  padding: 36px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 80px rgba(15, 23, 42, 0.35);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 700;
+}
+
+.hero-title {
+  margin: 1.5rem 0 0.75rem;
+  font-size: clamp(2.4rem, 3vw, 4.5rem);
+  line-height: 1.03;
+  letter-spacing: -0.05em;
+}
+
+.hero-text,
+.footer-text,
+.finished-text {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.input-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.input-label {
+  font-weight: 700;
+  min-width: 140px;
+}
+
+.date-input {
+  border-radius: 18px;
+  border: none;
+  padding: 0.95rem 1.1rem;
+  min-width: 260px;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
+
+.grid-time {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-time {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card-time {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 28px;
+  padding: 1.8rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.14);
+}
+
+.card-value {
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.card-label {
+  margin-top: 0.8rem;
+  color: rgba(255, 255, 255, 0.76);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.finished-card {
+  margin-top: 2.5rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 32px;
+  padding: 2rem;
+}
+
+.finished-emoji {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.finished-title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin: 0;
+}
