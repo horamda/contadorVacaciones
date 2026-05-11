@@ -1,12 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contador de Vacaciones</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuenta Regresiva Vacaciones</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2193b0, #6dd5ed);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .contenedor {
+      background: rgba(255,255,255,0.15);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      width: 90%;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 30px;
+    }
+
+    .reloj {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .caja {
+      background: rgba(255,255,255,0.2);
+      padding: 20px;
+      border-radius: 15px;
+      min-width: 100px;
+    }
+
+    .numero {
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    .texto {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    #mensaje {
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h1>✈️ Mis vacaciones empiezan en:</h1>
+
+    <input type="datetime-local" id="fecha" />
+
+    <div class="reloj">
+      <div class="caja">
+        <div class="numero" id="dias">00</div>
+        <div class="texto">Días</div>
+      </div>
+
+      <div class="caja">
+        <div class="numero" id="horas">00</div>
+        <div class="texto">Horas</div>
+      </div>
+
+      <div class="caja">
+        <div class="numero" id="minutos">00</div>
+        <div class="texto">Minutos</div>
+      </div>
+
+      <div class="caja">
+        <div class="numero" id="segundos">00</div>
+        <div class="texto">Segundos</div>
+      </div>
+    </div>
+
+    <div id="mensaje"></div>
+  </div>
+
+  <script>
+    const fechaInput = document.getElementById('fecha');
+
+    // Fecha por defecto: 30 días adelante
+    const fechaDefault = new Date();
+    fechaDefault.setDate(fechaDefault.getDate() + 30);
+    fechaDefault.setHours(8,0,0,0);
+
+    fechaInput.value = fechaDefault.toISOString().slice(0,16);
+
+    function actualizarContador() {
+      const fechaObjetivo = new Date(fechaInput.value).getTime();
+      const ahora = new Date().getTime();
+      const diferencia = fechaObjetivo - ahora;
+
+      if (diferencia <= 0) {
+        document.getElementById('mensaje').innerHTML = '🎉 ¡Llegaron tus vacaciones!';
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      document.getElementById('dias').innerHTML = dias;
+      document.getElementById('horas').innerHTML = horas;
+      document.getElementById('minutos').innerHTML = minutos;
+      document.getElementById('segundos').innerHTML = segundos;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
+
+</body>
 </html>    
